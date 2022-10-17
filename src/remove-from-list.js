@@ -1,4 +1,4 @@
-const { NotImplementedError } = require('../extensions/index.js');
+const { NotImplementedError } = require("../extensions/index.js");
 
 // const { ListNode } = require('../extensions/list-node.js');
 
@@ -7,7 +7,7 @@ const { NotImplementedError } = require('../extensions/index.js');
  * remove all elements from list l that have a value equal to k.
  *
  * @param {List} l
- * @param {Number} k
+ * @param {list} k
  * @return {List}
  *
  * @example
@@ -22,11 +22,30 @@ const { NotImplementedError } = require('../extensions/index.js');
  *   }
  * }
  */
-function removeKFromList(/* l, k */) {
-  throw new NotImplementedError('Not implemented');
+function removeKFromList(l, k) {
+  let list = l;
+
+  if (l.value === k) {
+    l = list.next;
+  }
+  if (list !== null) {
+    while (list.next) {
+      if (list.next.value !== k) {
+        list = list.next;
+      } else {
+        list.next = list.next.next;
+      }
+    }
+  }
+
+  return l;
+
+  console.log("list: ", list);
+  // throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
 }
+removeKFromList([3, 1, 2, 3, 4, 5], 3);
 
 module.exports = {
-  removeKFromList
+  removeKFromList,
 };
